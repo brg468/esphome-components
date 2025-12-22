@@ -14,7 +14,7 @@ namespace wmbus {
         std::vector<unsigned char> frame(t_in.data, t_in.data + t_in.length);
         std::string telegram = format_hex_pretty(frame);
         telegram.erase(std::remove(telegram.begin(), telegram.end(), '.'), telegram.end());
-        ESP_LOGV(TAG, "Frame: %s [with CRC]", telegram.c_str());
+        ESP_LOGD(TAG, "Frame: %s [with CRC]", telegram.c_str());
         if (mBusDecodeFormatA(t_in, t_frame)) {
           retVal = true;
         }
@@ -37,19 +37,19 @@ namespace wmbus {
       telegram.erase(std::remove(telegram.begin(), telegram.end(), '.'), telegram.end());
       if (telegram.size() > 400) {  // ToDo: rewrite
         std::string tel_01 = telegram.substr(0,400);
-        ESP_LOGV(TAG, "Frame: %s [RAW]", tel_01.c_str());
+        ESP_LOGD(TAG, "Frame: %s [RAW]", tel_01.c_str());
         std::string tel_02 = telegram.substr(400,800);
-        ESP_LOGV(TAG, "       %s [RAW]", tel_02.c_str());
+        ESP_LOGD(TAG, "       %s [RAW]", tel_02.c_str());
       }
       else {
-        ESP_LOGV(TAG, "Frame: %s [RAW]", telegram.c_str());
+        ESP_LOGD(TAG, "Frame: %s [RAW]", telegram.c_str());
       }
 
       if (decode3OutOf6(&t_in, packetSize(t_in.lengthField))) {
         std::vector<unsigned char> frame(t_in.data, t_in.data + t_in.length);
         std::string telegram = format_hex_pretty(frame);
         telegram.erase(std::remove(telegram.begin(), telegram.end(), '.'), telegram.end());
-        ESP_LOGV(TAG, "Frame: %s [with CRC]", telegram.c_str());
+        ESP_LOGD(TAG, "Frame: %s [with CRC]", telegram.c_str());
         if (mBusDecodeFormatA(t_in, t_frame)) {
           retVal = true;
         }
