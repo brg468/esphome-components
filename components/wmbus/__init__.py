@@ -78,7 +78,7 @@ CONFIG_SCHEMA = cv.Schema({
     cv.Optional(CONF_LED_BLINK_TIME, default="300ms"): cv.positive_time_period,
     cv.Optional(CONF_LOG_UNKNOWN,    default=True):    cv.boolean,
     cv.Optional(CONF_CLIENTS):                         cv.ensure_list(CLIENT_SCHEMA),
-    cv.Optional(CONF_FREQUENCY,      default=868.950): cv.float_range(min=300, max=928),
+    cv.Optional(CONF_FREQUENCY,      default=868.950): cv.float_range(min=300, max=960),
     cv.Optional(CONF_SYNC_MODE,      default=False):   cv.boolean,
 })
 
