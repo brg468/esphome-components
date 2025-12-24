@@ -24,7 +24,7 @@ namespace wmbus {
         std::vector<unsigned char> frame(t_in.data, t_in.data + t_in.length);
         std::string telegram = format_hex_pretty(frame);
         telegram.erase(std::remove(telegram.begin(), telegram.end(), '.'), telegram.end());
-        ESP_LOGV(TAG, "Frame: %s [with CRC]", telegram.c_str());
+        ESP_LOGD(TAG, "Frame: %s [with CRC]", telegram.c_str());
         if (mBusDecodeFormatB(t_in, t_frame)) {
           retVal = true;
         }
